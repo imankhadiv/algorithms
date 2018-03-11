@@ -16,4 +16,6 @@ buildNumber.properties
 .idea/
 algorithms.iml
 pom.xml
-src/
+/src/main/java/com/irast/algorithms/App.java
+
+
