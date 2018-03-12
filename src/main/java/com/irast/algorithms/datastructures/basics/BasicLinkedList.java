@@ -1,4 +1,4 @@
-package com.irast.algorithms.datastructures;
+package com.irast.algorithms.datastructures.basics;
 
 import java.util.StringJoiner;
 
@@ -6,7 +6,7 @@ public class BasicLinkedList<T> {
 
     Node first;
     Node last;
-    int nodeCount;
+    private int nodeCount;
 
 
     public int size() {
@@ -125,7 +125,15 @@ public class BasicLinkedList<T> {
         return stringJoiner.toString();
     }
 
-    class Node {
+    public Node getFirst() {
+        return first;
+    }
+
+    public Node getLast() {
+        return last;
+    }
+
+    public class Node {
 
         private T value;
         private Node next;
@@ -136,6 +144,14 @@ public class BasicLinkedList<T> {
 
         public T getValue() {
             return value;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 }

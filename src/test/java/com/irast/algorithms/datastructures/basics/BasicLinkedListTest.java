@@ -1,4 +1,4 @@
-package com.irast.algorithms.datastructures;
+package com.irast.algorithms.datastructures.basics;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -160,6 +160,7 @@ public class BasicLinkedListTest {
         assertEquals(1, val);
 
     }
+
     private void addItemToList(int... items) {
         for (int item : items) {
             app.add(item);
