@@ -28,6 +28,7 @@ class LinkedListUtilTest {
         app.removeDuplicatesWithBuffer(linkedList);
         Assert.assertEquals(30, linkedList.get(2).intValue());
     }
+
     @Test
     void removeDuplicatesWhenAllNodesAreEquals() {
 
@@ -64,12 +65,30 @@ class LinkedListUtilTest {
         Assert.assertEquals(10, linkedList.get(0).intValue());
     }
 
+    @Test
+    void findKthElementInTheList() {
+
+        BasicLinkedList<Integer> linkedList = createList();
+        BasicLinkedList.Node node = app.findKthLastNode(linkedList, 1);
+
+        Assert.assertEquals(50, node.getValue());
+    }
+
+    @org.junit.Test(expected = IllegalStateException.class)
+    void shouldThrowExceptionWhenKIsLessThanOne() {
+
+        BasicLinkedList<Integer> linkedList = createList();
+        BasicLinkedList.Node node = app.findKthLastNode(linkedList, 0);
+
+    }
 
     private BasicLinkedList<Integer> createList() {
         BasicLinkedList<Integer> basicLinkedList = new BasicLinkedList<>();
         basicLinkedList.add(10);
         basicLinkedList.add(20);
         basicLinkedList.add(30);
+        basicLinkedList.add(40);
+        basicLinkedList.add(50);
         return basicLinkedList;
     }
 }
