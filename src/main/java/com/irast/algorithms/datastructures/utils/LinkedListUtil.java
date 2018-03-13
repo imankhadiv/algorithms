@@ -76,4 +76,49 @@ public class LinkedListUtil {
         return i;
     }
 
+    public BasicLinkedList<Integer> partitionLinkedList(BasicLinkedList<Integer>.Node node, int x) {
+
+        BasicLinkedList<Integer>.Node lessStart = null;
+        BasicLinkedList<Integer>.Node lessEnd = null;
+        BasicLinkedList<Integer>.Node greaterStart = null;
+        BasicLinkedList<Integer>.Node greaterEnd = null;
+
+        while (node != null) {
+            System.out.println(node.getValue() + "-" + x);
+            BasicLinkedList<Integer>.Node next = node.getNext();
+            node.setNext(null);
+            if (node.getValue() < x) {
+                if (lessStart == null) {
+                    lessStart = node;
+                    lessEnd = lessStart;
+                } else {
+                    lessEnd.setNext(node);
+                    lessEnd = lessEnd.getNext();
+                }
+            } else {
+                if (greaterStart == null) {
+                    greaterStart = node;
+                    greaterEnd = greaterStart;
+                } else {
+                    greaterEnd.setNext(node);
+                    greaterEnd = greaterEnd.getNext();
+                }
+            }
+            node = next;
+        }
+        lessEnd.setNext(greaterStart);
+        return insertNodesIntoLinkedList(lessStart);
+    }
+
+    private BasicLinkedList<Integer> insertNodesIntoLinkedList(BasicLinkedList<Integer>.Node first) {
+        BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
+        while (first != null) {
+            linkedList.add(first.getValue());
+            first = first.getNext();
+        }
+        System.out.println(linkedList);
+        return linkedList;
+    }
+
+
 }

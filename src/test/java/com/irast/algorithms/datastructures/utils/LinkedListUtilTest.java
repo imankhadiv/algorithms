@@ -71,7 +71,7 @@ class LinkedListUtilTest {
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList.Node node = app.findKthLastNode(linkedList, 1);
 
-        Assert.assertEquals(50, node.getValue());
+        Assert.assertEquals(5, node.getValue());
     }
 
     @org.junit.Test(expected = IllegalStateException.class)
@@ -82,6 +82,17 @@ class LinkedListUtilTest {
 
     }
 
+    @Test
+    void partitionLinkedList() {
+
+        BasicLinkedList<Integer> linkedList = createList();
+        BasicLinkedList<Integer> partitionedList = app.partitionLinkedList(linkedList.getFirst(), 40);
+        Assert.assertEquals(50, partitionedList.getLast().getValue().intValue());
+
+//        Assert.assertEquals(java.util.Optional.of(50), partitionedList.getLast().getValue());
+    }
+
+
     private BasicLinkedList<Integer> createList() {
         BasicLinkedList<Integer> basicLinkedList = new BasicLinkedList<>();
         basicLinkedList.add(10);
@@ -89,6 +100,8 @@ class LinkedListUtilTest {
         basicLinkedList.add(30);
         basicLinkedList.add(40);
         basicLinkedList.add(50);
+        basicLinkedList.add(10);
+        basicLinkedList.add(5);
         return basicLinkedList;
     }
 }
