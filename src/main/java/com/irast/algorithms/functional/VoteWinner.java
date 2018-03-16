@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeSet;
 import java.util.function.BinaryOperator;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
 public class VoteWinner {
@@ -13,13 +14,7 @@ public class VoteWinner {
     public Map<String, Integer> findTheWinner(Map<String, Integer> votes) {
 
 
-        Comparator<Map.Entry<String, Integer>> comparator = (entry1, entry2) -> {
-            int val = Integer.compare(entry1.getValue(), entry2.getValue());
-            if (val == 0) {
-                val = entry1.getKey().compareTo(entry2.getKey());
-            }
-            return val;
-        };
+        Comparator<Map.Entry<String, Integer>> comparator = Comparator.comparingInt((ToIntFunction<Map.Entry<String, Integer>>) Map.Entry::getValue).thenComparing(Map.Entry::getKey);
         BinaryOperator<Integer> binaryOperator = Integer::max;
         Map<String, Integer> winnerMap = votes.entrySet().stream().sorted(comparator.reversed()).limit(1).collect(
                 Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, binaryOperator, LinkedHashMap::new));
