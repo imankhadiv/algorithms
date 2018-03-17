@@ -18,6 +18,20 @@ public class LongestPalindromeSubString {
         return result;
     }
 
+    //better approach
+    public String findTheLongestPalindromeSubstring2(String input) {
+
+        for (int i = 0; i < input.length() - 1; i++) {
+            for (int j = input.length(); j > i; j--) {
+                String sub = input.substring(i, j);
+                if (isInputPalindrome2(sub)) {
+                    return sub;
+                }
+            }
+        }
+        return null;
+    }
+
     public boolean isInputPlaindrome(String input) {
 
         StringBuilder stringJoiner = new StringBuilder(input);
