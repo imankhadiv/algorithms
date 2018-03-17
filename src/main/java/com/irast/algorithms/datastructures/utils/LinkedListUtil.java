@@ -82,7 +82,7 @@ public class LinkedListUtil {
         BasicLinkedList<Integer>.Node lessEnd = null;
         BasicLinkedList<Integer>.Node greaterStart = null;
         BasicLinkedList<Integer>.Node greaterEnd = null;
-
+        System.out.println("Before partition..." + insertNodesIntoLinkedList(node));
         while (node != null) {
             System.out.println(node.getValue() + "-" + x);
             BasicLinkedList<Integer>.Node next = node.getNext();
@@ -107,7 +107,30 @@ public class LinkedListUtil {
             node = next;
         }
         lessEnd.setNext(greaterStart);
+        System.out.println("After partition..." + insertNodesIntoLinkedList(lessStart));
+
         return insertNodesIntoLinkedList(lessStart);
+    }
+
+    public BasicLinkedList<Integer> partitionLinkedListWithoutPointers(BasicLinkedList<Integer>.Node node, int x) {
+
+        BasicLinkedList<Integer>.Node head = node;
+        BasicLinkedList<Integer>.Node tail = node;
+        while (node != null) {
+            BasicLinkedList<Integer>.Node next = node.getNext();
+            Integer val = node.getValue();
+            if (val > x) {
+                tail.setNext(node);
+                tail = node;
+            } else {
+                node.setNext(head);
+                head = node;
+            }
+            node = next;
+        }
+        tail.setNext(null);
+        System.out.println(insertNodesIntoLinkedList(head));
+        return insertNodesIntoLinkedList(head);
     }
 
     private BasicLinkedList<Integer> insertNodesIntoLinkedList(BasicLinkedList<Integer>.Node first) {
@@ -116,7 +139,6 @@ public class LinkedListUtil {
             linkedList.add(first.getValue());
             first = first.getNext();
         }
-        System.out.println(linkedList);
         return linkedList;
     }
 

@@ -88,8 +88,14 @@ class LinkedListUtilTest {
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList<Integer> partitionedList = app.partitionLinkedList(linkedList.getFirst(), 40);
         Assert.assertEquals(50, partitionedList.getLast().getValue().intValue());
+    }
 
-//        Assert.assertEquals(java.util.Optional.of(50), partitionedList.getLast().getValue());
+    @Test
+    void partitionLinkedListWithoutPointer() {
+
+        BasicLinkedList<Integer> linkedList = createList();
+        BasicLinkedList<Integer> partitionedList = app.partitionLinkedListWithoutPointers(linkedList.getFirst(), 19);
+        Assert.assertEquals(50, partitionedList.getLast().getValue().intValue());
     }
 
 
@@ -100,7 +106,7 @@ class LinkedListUtilTest {
         basicLinkedList.add(30);
         basicLinkedList.add(40);
         basicLinkedList.add(50);
-        basicLinkedList.add(10);
+        basicLinkedList.add(11);
         basicLinkedList.add(5);
         return basicLinkedList;
     }
