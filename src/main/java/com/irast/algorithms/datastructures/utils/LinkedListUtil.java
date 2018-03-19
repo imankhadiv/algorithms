@@ -4,6 +4,7 @@ import com.irast.algorithms.datastructures.basics.BasicLinkedList;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 public class LinkedListUtil {
 
@@ -131,6 +132,27 @@ public class LinkedListUtil {
         tail.setNext(null);
         System.out.println(insertNodesIntoLinkedList(head));
         return insertNodesIntoLinkedList(head);
+    }
+
+    public boolean isLinkedListPalindrome(BasicLinkedList<Integer> linkedList) {
+        BasicLinkedList<Integer>.Node slowRunner = linkedList.getFirst();
+        BasicLinkedList<Integer>.Node fastRunner = linkedList.getFirst();
+        Stack<BasicLinkedList.Node> stack = new Stack<>();
+        while (fastRunner != null && fastRunner.getNext() != null) {
+            fastRunner = fastRunner.getNext().getNext();
+            stack.add(slowRunner);
+            slowRunner = slowRunner.getNext();
+        }
+        //handling odd number
+        if(fastRunner != null){
+            slowRunner = slowRunner.getNext();
+        }
+        while (slowRunner != null) {
+            BasicLinkedList<Integer>.Node node = stack.pop();
+            if (!node.getValue().equals(slowRunner.getValue())) return false;
+            slowRunner = slowRunner.getNext();
+        }
+        return true;
     }
 
     private BasicLinkedList<Integer> insertNodesIntoLinkedList(BasicLinkedList<Integer>.Node first) {

@@ -2,23 +2,23 @@ package com.irast.algorithms.datastructures.utils;
 
 import com.irast.algorithms.datastructures.basics.BasicLinkedList;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-class LinkedListUtilTest {
+public class LinkedListUtilTest {
 
     BasicLinkedList<Integer> linkedList;
     LinkedListUtil app;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         linkedList = new BasicLinkedList<>();
         app = new LinkedListUtil();
 
     }
 
     @Test
-    void removeDuplicatesWithBuffer() {
+    public void removeDuplicatesWithBuffer() {
 
         linkedList.add(10);
         linkedList.add(20);
@@ -30,7 +30,7 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void removeDuplicatesWhenAllNodesAreEquals() {
+    public void removeDuplicatesWhenAllNodesAreEquals() {
 
         linkedList.add(10);
         linkedList.add(10);
@@ -42,7 +42,7 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void removeDuplicatesWithoutBuffer() {
+    public void removeDuplicatesWithoutBuffer() {
 
         linkedList.add(10);
         linkedList.add(20);
@@ -54,7 +54,7 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void removeDuplicatesWithoutBufferWhenAllNodesAreEquals() {
+    public void removeDuplicatesWithoutBufferWhenAllNodesAreEquals() {
 
         linkedList.add(10);
         linkedList.add(10);
@@ -66,7 +66,7 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void findKthElementInTheList() {
+    public void findKthElementInTheList() {
 
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList.Node node = app.findKthLastNode(linkedList, 1);
@@ -75,7 +75,7 @@ class LinkedListUtilTest {
     }
 
     @org.junit.Test(expected = IllegalStateException.class)
-    void shouldThrowExceptionWhenKIsLessThanOne() {
+    public void shouldThrowExceptionWhenKIsLessThanOne() {
 
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList.Node node = app.findKthLastNode(linkedList, 0);
@@ -83,7 +83,7 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void partitionLinkedList() {
+    public void partitionLinkedList() {
 
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList<Integer> partitionedList = app.partitionLinkedList(linkedList.getFirst(), 40);
@@ -91,11 +91,34 @@ class LinkedListUtilTest {
     }
 
     @Test
-    void partitionLinkedListWithoutPointer() {
+    public void partitionLinkedListWithoutPointer() {
 
         BasicLinkedList<Integer> linkedList = createList();
         BasicLinkedList<Integer> partitionedList = app.partitionLinkedListWithoutPointers(linkedList.getFirst(), 19);
         Assert.assertEquals(50, partitionedList.getLast().getValue().intValue());
+    }
+
+    @Test
+    public void shouldReturnTrueWhenListIsPalindromeForOddSizeList() {
+
+        BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
+        linkedList.add(10);
+        linkedList.add(10);
+        linkedList.add(20);
+        linkedList.add(10);
+        linkedList.add(10);
+
+        Assert.assertTrue(app.isLinkedListPalindrome(linkedList));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenListIsPalindromeForEvenSizeList() {
+
+        BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
+        linkedList.add(10);
+        linkedList.add(10);
+
+        Assert.assertTrue(app.isLinkedListPalindrome(linkedList));
     }
 
 
