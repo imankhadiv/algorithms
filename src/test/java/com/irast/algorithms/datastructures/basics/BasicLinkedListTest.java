@@ -78,7 +78,6 @@ public class BasicLinkedListTest {
 
     @Test
     public void shouldModifyFirstNodeWhenInsertingAtIndexZero() {
-
         addItemToList(10, 11);
         app.insert(20, 0);
 
@@ -88,7 +87,6 @@ public class BasicLinkedListTest {
 
     @Test
     public void shouldModifyLastNodeWhenInsertingAtIndexEqualsToNodeCount() {
-
         addItemToList(10, 11);
         app.insert(20, 2);
 
