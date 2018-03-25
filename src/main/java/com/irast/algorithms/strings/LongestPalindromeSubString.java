@@ -41,11 +41,10 @@ public class LongestPalindromeSubString {
     public boolean isInputPalindrome2(String input) {
 
         int i = 0, j = input.length() - 1;
-        while (i < j) {
-            if (input.charAt(i) != input.charAt(j)) return false;
+        while (i < j && input.charAt(i) == input.charAt(j)) {
             i++;
             j--;
         }
-        return true;
+        return input.charAt(i) == input.charAt(j);
     }
 }

@@ -21,6 +21,7 @@ public class LongestPalindromeSubStringTest {
         String input = "abcba";
         assertTrue(app.isInputPlaindrome(input));
     }
+
     @Test
     public void shouldCheckIfInputIsPalindrome2() {
 
