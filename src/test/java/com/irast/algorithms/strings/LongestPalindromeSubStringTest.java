@@ -35,4 +35,12 @@ public class LongestPalindromeSubStringTest {
         String input = "aabaa";
         Assert.assertEquals("aabaa", app.findTheLongestPalindromeSubstring(input));
     }
+
+
+    @Test
+    public void findLongestPalindromeSubstringN2() {
+
+        String input = "aabaa";
+        Assert.assertEquals("aabaa", app.longestPalindromeN2(input));
+    }
 }

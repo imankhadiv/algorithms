@@ -47,4 +47,45 @@ public class LongestPalindromeSubString {
         }
         return input.charAt(i) == input.charAt(j);
     }
+
+
+    public String longestPalindromeN2(String s) {
+        if(s.length() == 1) return s;
+        int startIdx = 0;
+        int endIdx = 1;
+        int maxLength = 1;
+        for (int i = 1; i < s.length(); i++) {
+            int start = i - 1;
+            int end = i;
+            //even
+            while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+                if (end - start + 1 > maxLength) {
+                    startIdx = start;
+                    endIdx = end;
+                    maxLength = (end - start) + 1;
+
+                }
+                start--;
+                end++;
+            }
+            start = i - 1;
+            end = i + 1;
+            while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+                if (end - start + 1 > maxLength) {
+                    startIdx = start;
+                    endIdx = end;
+                    maxLength = (end - start) + 1;
+                }
+                start--;
+                end++;
+            }
+        }
+        System.out.println(maxLength);
+        System.out.println("Longest palindrome sub is: " + s.substring(startIdx, endIdx + 1));
+
+
+        return s.substring(startIdx, endIdx + 1);
+
+
+    }
 }
