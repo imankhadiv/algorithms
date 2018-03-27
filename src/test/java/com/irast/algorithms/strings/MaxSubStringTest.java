@@ -38,4 +38,12 @@ public class MaxSubStringTest {
 
         Assert.assertEquals(expected, app.findMaxSubStringLengthWithNoDuplicate(input));
     }
+    @Test
+    public void findMaxSubStrinqLengthWithNoDuplicateUsingMap() {
+
+        String input = "aabbcd";
+        int expected = 3;
+
+        Assert.assertEquals(expected, app.findMaxSubStringLengthWithNoDuplicateUsingMap(input));
+    }
 }
