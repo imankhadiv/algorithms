@@ -1,9 +1,6 @@
 package com.irast.algorithms.functional;
 
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
@@ -37,6 +34,11 @@ public class VoteWinner {
         entrySet.addAll(votes.entrySet());
         Map.Entry<String, Integer> winner = entrySet.iterator().next();
         return winner;
+    }
 
+    public Map.Entry<String, Integer> findTheWinnerFromMap(Map<String, Integer> map) {
+
+        Optional<Map.Entry<String, Integer>> optional = map.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue));
+        return optional.get();
     }
 }
