@@ -24,13 +24,14 @@ class VoteWinnerTest {
         map.put("Z", 10);
         map.put("D", 5);
         map.put("A", 5);
-        map.put("ZZ", 40);
+        map.put("ZZD", 40);
+        map.put("ZZA", 40);
         map.put("X", 5);
         map.put("BZ", 40);
         map.put("BB", 20);
 
         Map<String, Integer> result = app.findTheWinner(map);
-        Assert.assertThat(result, Matchers.hasKey("ZZ"));
+        Assert.assertThat(result, Matchers.hasKey("ZZD"));
         Assert.assertThat(result, Matchers.hasValue(40));
     }
 
@@ -42,13 +43,14 @@ class VoteWinnerTest {
         map.put("Z", 10);
         map.put("D", 5);
         map.put("A", 5);
-        map.put("ZZ", 40);
+        map.put("ZZA", 40);
+        map.put("ZZD", 40);
         map.put("X", 5);
         map.put("BZ", 40);
         map.put("BB", 20);
 
         Map.Entry<String, Integer> result = app.findTheWinnerWithoutFunctional(map);
-        Assert.assertEquals("ZZ", result.getKey());
+        Assert.assertEquals("ZZD", result.getKey());
         Assert.assertEquals(40, result.getValue().intValue());
 
     }
