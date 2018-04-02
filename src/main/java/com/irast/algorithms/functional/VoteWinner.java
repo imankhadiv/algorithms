@@ -41,4 +41,12 @@ public class VoteWinner {
         Optional<Map.Entry<String, Integer>> optional = map.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue));
         return optional.get();
     }
+
+
+    public Map.Entry<String, Integer> findWinnerUsingMax(Map<String, Integer> map) {
+
+        Comparator<Map.Entry<String, Integer>> comparable = Comparator.comparingInt((ToIntFunction<Map.Entry<String, Integer>>) Map.Entry::getValue).thenComparing(Map.Entry::getKey);
+        Optional<Map.Entry<String, Integer>> optional = map.entrySet().stream().max(comparable);
+        return optional.get();
+    }
 }
