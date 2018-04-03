@@ -50,4 +50,17 @@ public class BTreeUtilTest {
         root.right = new Node(200);
         Assert.assertFalse(app.isBinarySearchTree(root));
     }
+
+
+    @Test
+    public void shouldCheckIfBTIsBalanced() {
+
+        Node root = new Node(100);
+        root.left = new Node(50);
+        root.right = new Node(200);
+        root.right.right = new Node(250);
+        root.right.right.right = new Node(260);
+        app.printBST(root);
+        Assert.assertFalse(app.checkIfBinayTreeIsBalanced(root));
+    }
 }

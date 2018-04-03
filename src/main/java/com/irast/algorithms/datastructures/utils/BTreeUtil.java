@@ -84,4 +84,19 @@ public class BTreeUtil {
             }
         }
     }
+
+    public boolean checkIfBinayTreeIsBalanced(Node root) {
+        System.out.println(checkIfBTreeIsBalanced(root));
+        return checkIfBTreeIsBalanced(root) != -1;
+    }
+
+    private int checkIfBTreeIsBalanced(Node root) {
+        if (root == null) return 0;
+        int left = checkIfBTreeIsBalanced(root.left);
+        if(left == -1) return -1;
+        int right = checkIfBTreeIsBalanced(root.right);
+        if(right == -1) return -1;
+        if (Math.abs(left - right) > 1) return -1;
+        return Integer.max(left, right) + 1;
+    }
 }
